@@ -93,10 +93,6 @@ levels_target <- readRDS(LABEL_ENCODER_FILE)
 prediction <- automl_predict(model = model, X = df)
 colnames(prediction) <- c(paste(levels_target))
 
-difference <- 1 - rowSums(prediction)
-prediction <- sweep(prediction, 1, difference/length(levels_target), "+")
-
-
 prediction[[id_feature]] = ids
 
 # Saving the predictions
