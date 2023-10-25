@@ -116,7 +116,7 @@ ymat <- matrix(seq(from = 1, to = lghlab, by = 1), nrow(df), lghlab, byrow = TRU
 ymat <- (ymat == as.numeric(encoded_target)) + 0
 
 # Train the model
-model <- automl_train(df, ymat, hpar = list(numiterations = 200), autopar = list(subtimelimit=120))
+model <- automl_train(df, ymat, hpar = list(numiterations = 100), autopar = list(subtimelimit=90))
 
 # Save the best model
 saveRDS(model, PREDICTOR_FILE_PATH)
