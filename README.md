@@ -1,4 +1,4 @@
-# automl Classifier
+# automl Binary Classifier
 
 Fits from simple regression to highly customizable deep neural networks
 either with gradient descent or metaheuristic, using automatic hyper parameters
@@ -8,7 +8,7 @@ URL:<br>
 https://aboulaboul.github.io/automl <br>
 https://github.com/aboulaboul/automl
 
-## This repository is a dockerized implementation of the re-usable classifier model.
+## This repository is a dockerized implementation of the re-usable binary classifier model.
 
 ## Project Structure
 
@@ -37,7 +37,7 @@ In this section we cover the following:
 
 ### Preparing your data
 
-- If you plan to run this model implementation on your own classification dataset, you will need your training and testing data in a CSV format. Also, you will need to create a schema file as per the Ready Tensor specifications. The schema is in JSON format, and it's easy to create. You can use the example schema file provided in the `schema` directory as a template.
+- If you plan to run this model implementation on your own binary classification dataset, you will need your training and testing data in a CSV format. Also, you will need to create a schema file as per the Ready Tensor specifications. The schema is in JSON format, and it's easy to create. You can use the example schema file provided in the `schema` directory as a template.
 
 ### To run locally (without Docker)
 
