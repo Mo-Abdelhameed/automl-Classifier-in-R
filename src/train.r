@@ -8,7 +8,7 @@ library(dplyr)
 set.seed(42)
 
 # Define directories and paths
-ROOT_DIR <- dirname(getwd())
+ROOT_DIR <- getwd()#dirname(getwd())
 MODEL_INPUTS_OUTPUTS <- file.path(ROOT_DIR, 'model_inputs_outputs')
 INPUT_DIR <- file.path(MODEL_INPUTS_OUTPUTS, "inputs")
 INPUT_SCHEMA_DIR <- file.path(INPUT_DIR, "schema")
@@ -116,8 +116,12 @@ ymat <- matrix(seq(from = 1, to = lghlab, by = 1), nrow(df), lghlab, byrow = TRU
 ymat <- (ymat == as.numeric(encoded_target)) + 0
 
 # Train the model
-model <- automl_train(df, ymat, hpar = list(numiterations = 100, layersacttype = c('relu', 'relu','sigmoid')), autopar = list(subtimelimit=90))
-
+if (model_category == "binary_classification"){
+    model <- automl_train(df, ymat, hpar = list(numiterations = 100, layersacttype = c('relu', 'relu', 'sigmoid')), autopar = list(subtimelimit=90))
+}
+if (model_category == "multiclass_classification"){
+    model <- automl_train(df, ymat, hpar = list(numiterations = 100, layersacttype = c('relu', 'relu', 'softmax')), autopar = list(subtimelimit=90))
+}
 
 # Save the best model
 saveRDS(model, PREDICTOR_FILE_PATH)
