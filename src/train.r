@@ -116,12 +116,7 @@ ymat <- matrix(seq(from = 1, to = lghlab, by = 1), nrow(df), lghlab, byrow = TRU
 ymat <- (ymat == as.numeric(encoded_target)) + 0
 
 # Train the model
-if (model_category == "binary_classification"){
-    model <- automl_train(df, ymat, hpar = list(numiterations = 100, layersacttype = c('relu', 'relu', 'sigmoid')), autopar = list(subtimelimit=90))
-}
-if (model_category == "multiclass_classification"){
-    model <- automl_train(df, ymat, hpar = list(numiterations = 100, layersacttype = c('relu', 'relu', 'softmax')), autopar = list(subtimelimit=90))
-}
+model <- automl_train(df, ymat, hpar = list(numiterations = 100, layersacttype = c('relu', 'relu', 'sigmoid')), autopar = list(subtimelimit=90))
 
 # Save the best model
 saveRDS(model, PREDICTOR_FILE_PATH)
